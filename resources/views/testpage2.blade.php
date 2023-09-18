@@ -8,7 +8,9 @@
     <title>Testpage</title>
 </head>
 <body>
-    <h1>Hello world</h1>
-    <p>Click <a href="/testpage2">here</a> to go to the next page.</p>
+<h1>Hello world</h1>
+<p>Dit is inderdaad testpage2, congrats!</p>
+
+<a href="/">Terug</a>
 </body>
 </html>
