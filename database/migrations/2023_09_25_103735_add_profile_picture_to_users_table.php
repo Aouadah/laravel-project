@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            //
-        });
+//        Schema::table('users', function (Blueprint $table) {
+//            $table->string('profile_photo');  //->after('password');
+//        });
     }
 
     /**
@@ -22,7 +22,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            //$table->foreignId('category_id')->constrained();
+            $table->dropColumn('profile_photo');
         });
     }
 };
