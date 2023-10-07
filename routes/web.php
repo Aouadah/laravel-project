@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GameslistController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,14 +18,11 @@ Route::get('/', function () {
     return view('startpage');
 });
 
-Route::get('gameslist', function () {
-    return view('gameslist');
-});
-
 Route::get('admin', function () {
     return view('admin');
 });
 
+Route::get('gameslist', [GameslistController::class, 'create']);
 
 
 
