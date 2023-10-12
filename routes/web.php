@@ -23,6 +23,7 @@ Route::get('admin', function () {
 });
 
 Route::get('gameslist', [GameslistController::class, 'create']);
+Route::post('gameslist', [GameslistController::class, 'store']);
 
 
 
