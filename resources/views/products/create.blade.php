@@ -5,12 +5,12 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Testpage</title>
+    <title>create</title>
 </head>
 <body>
 
 <div>
-    <form method="POST" action="/gameslist">
+    <form method="POST" action="/products">
         @csrf
 
         <div class="mb-6">
@@ -59,6 +59,16 @@
 
     </form>
 </div>
+
+@foreach($products as $product)
+    <article>
+        <h1>
+            <a href="/products/{{$product->id}}">
+                {{$product->title}}
+            </a>
+        </h1>
+    </article>
+@endforeach
 
 </body>
 </html>

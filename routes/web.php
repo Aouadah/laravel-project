@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\GameslistController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
+use App\models\Product;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,8 +23,8 @@ Route::get('admin', function () {
     return view('admin');
 });
 
-Route::get('gameslist', [GameslistController::class, 'create']);
-Route::post('gameslist', [GameslistController::class, 'store']);
+Route::get('products', [ProductController::class, 'create']);
+Route::post('products', [ProductController::class, 'store']);
 
 
 
