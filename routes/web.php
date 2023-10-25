@@ -33,10 +33,22 @@ Route::get('game', function () {
     ]);
 });
 
+//dd(request('search'))
 //Route::get('products', [ProductController::class, 'create']);
 //Route::post('products', [ProductController::class, 'store']);
 
-Route::get('products', [ProductController::class, 'index'])->name('product.index');
+Route::get('products', function () {
+    $products = Product::query();
+
+    if (request('search')) {
+        $products->where('title', 'like', '%' . request('search') . '%');
+    }
+
+    $products = $products->get();
+
+    return view('products.index', ['products' => $products]);
+})->name('product.index');
+
 Route::get('products/create', [ProductController::class, 'create'])->name('product.create');
 Route::post('products', [ProductController::class, 'store'])->name('product.store');
 Route::get('products/{product}/edit', [ProductController::class, 'edit'])->name('product.edit');

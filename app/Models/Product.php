@@ -36,4 +36,9 @@ class Product extends Model
     protected $casts = [
         'password' => 'hashed',
     ];
+
+    public static function latest()
+    {
+
+    }
 }

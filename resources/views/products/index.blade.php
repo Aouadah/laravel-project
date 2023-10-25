@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -8,6 +9,16 @@
     <title>Index</title>
 </head>
 <body>
+
+{{--search--}}
+<div class="relative flex lg:inline-flex items-center bg-gray-100 rounded-xl px-3 py-2">
+    <form method="GET" action="#">
+        <label for="searching">search
+            <input type="text" name="search" placeholder="find something">
+        </label>
+    </form>
+</div>
+
     <div>
         <table>
             <tr>
@@ -27,7 +38,9 @@
                         <form method="post" action="{{route('product.delete', ['product' => $product])}}">
                             @csrf
                             @method('delete')
-                            <input type="submit" value="Delete">
+                            <div>
+                                <input type="submit" value="Delete">
+                            </div>
                         </form>
                     </td>
                 </tr>
