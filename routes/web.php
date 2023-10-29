@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\models\Product;
@@ -19,29 +20,23 @@ Route::get('/', function () {
     return view('startpage');
 });
 
-Route::get('admin', function () {
-    return view('admin');
-});
-
-Route::get('listofgames', function () {
-    return view('listofgames');
-});
-
 Route::get('game', function () {
     return view('game', [
     //'product' => '<h1>hello world</h1>'
     ]);
 });
 
-//dd(request('search'))
-//Route::get('products', [ProductController::class, 'create']);
-//Route::post('products', [ProductController::class, 'store']);
-
 Route::get('products', function () {
     $products = Product::query();
 
     if (request('search')) {
-        $products->where('title', 'like', '%' . request('search') . '%');
+        $products->where('title', 'like', '%' . request('search') . '%')
+        ->orWhere('genre', 'like', '%' . request('search') . '%');
+    }
+
+    if (request('category')) {
+        $products->where('title', 'like', '%' . request('search') . '%')
+            ->orWhere('genre', 'like', '%' . request('search') . '%');
     }
 
     $products = $products->get();
@@ -55,7 +50,7 @@ Route::get('products/{product}/edit', [ProductController::class, 'edit'])->name(
 Route::put('products/{product}/update', [ProductController::class, 'update'])->name('product.update');
 Route::delete('products/{product}/delete', [ProductController::class, 'delete'])->name('product.delete');
 
-
+Route::get('admin/products/create', [ProductController::class, 'create'])->name('product.create');
 
 
 
